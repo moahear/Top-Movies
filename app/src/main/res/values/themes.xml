@@ -2,7 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.TopMovies" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/crayola</item>
+        <item name="colorPrimaryVariant">@color/chines_black</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/crayola</item>
+        <item name="colorSecondaryVariant">@color/crayola</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+
+        <!-- Background for all -->
+        <item name="android:windowBackground">@color/chines_black</item>
     </style>
 
     <style name="Theme.TopMovies" parent="Base.Theme.TopMovies" />

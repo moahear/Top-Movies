@@ -1,7 +1,8 @@
-package com.gamil.moahear.topmovies
+package com.gamil.moahear.topmovies.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gamil.moahear.topmovies.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
