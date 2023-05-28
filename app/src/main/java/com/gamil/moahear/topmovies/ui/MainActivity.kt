@@ -3,10 +3,7 @@ package com.gamil.moahear.topmovies.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.gamil.moahear.topmovies.R
 import com.gamil.moahear.topmovies.databinding.ActivityMainBinding
@@ -18,13 +15,11 @@ class MainActivity : AppCompatActivity() {
     private val navController by lazy{
         binding.fragmentContainerView.getFragment<NavHostFragment>().navController
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.apply {
-
             bottomNavigationView.setupWithNavController(navController)
             //show or hide bottom navigation on fragment
             navController.addOnDestinationChangedListener { _, destination, _ ->
