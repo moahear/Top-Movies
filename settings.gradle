@@ -3,6 +3,8 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        // For DynamicSizes
+        // maven { url 'https://jitpack.io' }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +12,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // For DynamicSizes
+        // maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "Top Movies"

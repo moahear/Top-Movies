@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="chines_black">#0E0F14</color>
+    <color name="chines_black_alpha">#C80E0F14</color>
+    <color name="scarlet">#F81633</color>
+    <color name="raising_black">#1D1D27</color>
+    <color name="crayola">#FEAA2E</color>
+    <color name="philippine_silver">#B3B3B3</color>
+    <color name="philippine_silver_alpha">#94B3B3B3</color>
+    <color name="gunmental">#2C2E43</color>
 </resources>
