@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Poster -->
+    <ImageView
+        android:id="@+id/img_movie_poster"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic"
+        />
+    <!-- Shadow -->
+    <View
+        android:background="@drawable/background_shadow_dark"
+        app:layout_constraintStart_toStartOf="@id/img_movie_poster"
+        app:layout_constraintEnd_toEndOf="@id/img_movie_poster"
+        app:layout_constraintBottom_toBottomOf="@id/img_movie_poster"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_150mdp"
+        />
+    <!-- Name -->
+    <TextView
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintBottom_toTopOf="@id/txt_movie_info"
+        app:layout_constraintStart_toStartOf="@id/txt_movie_info"
+        app:layout_constraintEnd_toEndOf="@id/txt_movie_info"
+        android:id="@+id/txt_movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!-- Info -->
+    <TextView
+        android:textColor="@color/philippine_silver"
+        android:textSize="@dimen/_12font_mdp"
+        android:fontFamily="sans-serif-light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/img_movie_poster"
+        app:layout_constraintEnd_toEndOf="@id/img_movie_poster"
+        android:id="@+id/txt_movie_info"
+        android:layout_marginEnd="@dimen/_20mdp"
+        android:layout_marginStart="@dimen/_20mdp"
+        app:layout_constraintBottom_toBottomOf="@id/img_movie_poster"
+        app:drawableStartCompat="@drawable/ic_round_star"
+        app:drawableTint="@color/crayola" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
