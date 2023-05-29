@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gamil.moahear.topmovies.model.register.RequestBodyRegister
+import com.gamil.moahear.topmovies.model.register.RequestRegisterBody
 import com.gamil.moahear.topmovies.model.register.ResponseRegister
 import com.gamil.moahear.topmovies.repository.RegisterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,7 @@ class RegisterViewModel @Inject constructor(private val registerRepository: Regi
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    fun registerUser(bodyRegister: RequestBodyRegister) {
+    fun sendRegisterUser(bodyRegister: RequestRegisterBody) {
         viewModelScope.launch {
             _isLoading.postValue(true)
             val responseRegister = registerRepository.registerUser(bodyRegister)

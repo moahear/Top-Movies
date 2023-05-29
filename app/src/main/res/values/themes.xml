@@ -14,7 +14,6 @@
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-
         <!-- Background for all -->
         <item name="android:windowBackground">@color/chines_black</item>
     </style>

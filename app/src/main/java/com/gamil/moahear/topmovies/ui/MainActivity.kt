@@ -7,26 +7,29 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.gamil.moahear.topmovies.R
 import com.gamil.moahear.topmovies.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     //Binding
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+
     //NavController
-    private val navController by lazy{
+    private val navController by lazy {
         binding.fragmentContainerView.getFragment<NavHostFragment>().navController
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.apply {
             bottomNavigationView.setupWithNavController(navController)
             //show or hide bottom navigation on fragment
             navController.addOnDestinationChangedListener { _, destination, _ ->
-                if (destination.id==R.id.splashFragment){
+                if (destination.id == R.id.splashFragment||destination.id==R.id.registerFragment) {
                     bottomNavigationView.visibility = View.GONE
-                }
-                else{
+                } else {
                     bottomNavigationView.visibility = View.VISIBLE
                 }
             }
@@ -36,6 +39,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onNavigateUp(): Boolean {
-        return navController.navigateUp()|| super.onNavigateUp()
+        return navController.navigateUp() || super.onNavigateUp()
     }
 }

@@ -46,7 +46,7 @@ class SplashFragment : Fragment() {
                         findNavController().navigate(R.id.action_splashFragment_to_registerFragment)
                     } else {
                         //Go to home fragment
-                        findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                        findNavController().navigate(R.id.action_to_homeFragment)
                     }
                 }
             //region second way with repeatOnLifecycle
