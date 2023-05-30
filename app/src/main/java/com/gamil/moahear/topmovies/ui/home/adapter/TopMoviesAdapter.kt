@@ -39,7 +39,7 @@ class TopMoviesAdapter @Inject constructor() :
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return topMovies.size
     }
 
     override fun onBindViewHolder(holder: TopMoviesViewHolder, position: Int) {
@@ -70,7 +70,7 @@ class TopMoviesAdapter @Inject constructor() :
     fun submitList(newList: List<ResponseMovies.Data>) {
         val diffResult = DiffUtil.calculateDiff(TopMoviesDiffUtilCallBack(topMovies, newList))
         diffResult.dispatchUpdatesTo(this)
-        topMovies.addAll(newList)
         topMovies.clear()
+        topMovies.addAll(newList)
     }
 }

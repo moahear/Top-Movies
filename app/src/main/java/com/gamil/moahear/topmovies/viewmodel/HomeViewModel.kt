@@ -12,15 +12,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
-    private var _topMovies = MutableLiveData<ResponseMovies>()
-    val topMovies: LiveData<ResponseMovies>
+    private var _topMovies = MutableLiveData<List<ResponseMovies.Data>>()
+    val topMovies: LiveData<List<ResponseMovies.Data>>
         get() = _topMovies
 
     fun getTopMovies(genreId: Int) =
         viewModelScope.launch {
             val response = homeRepository.getTopMovies(genreId)
             if (response.isSuccessful) {
-                _topMovies.postValue(response.body())
+                response.body()?.let {
+                    _topMovies.postValue(it.data)
+                }
             }
         }
 
