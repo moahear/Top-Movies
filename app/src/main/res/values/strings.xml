@@ -15,7 +15,7 @@
     <string name="more_info">Get more_info</string>
     <string name="empty_list">Not found any item !</string>
     <string name="search_here">Search…</string>
-    <string name="summery">Summery</string>
+    <string name="summary">Summery</string>
     <string name="writers">writers</string>
     <string name="actors">Actors</string>
 </resources>

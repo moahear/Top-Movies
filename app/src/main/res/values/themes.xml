@@ -31,4 +31,10 @@
         <item name="boxBackgroundColor">@color/gunmetal</item>
         <item name="startIconTint">@color/philippine_silver</item>
     </style>
+    <!-- Rounded image view -->
+    <style name="RoundedImageViewOverLay" >
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_10mdp</item>
+    </style>
+    
 </resources>
