@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.favorite.FavoriteFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Recycler view -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favorite_movies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/_10mdp" />
 
-</FrameLayout>
+    <!-- Empty Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <include layout="@layout/empty_item" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

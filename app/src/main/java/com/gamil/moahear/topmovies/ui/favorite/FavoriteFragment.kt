@@ -5,17 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gamil.moahear.topmovies.R
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.gamil.moahear.topmovies.databinding.FragmentFavoriteBinding
+import com.gamil.moahear.topmovies.utils.initRecyclerView
+import com.gamil.moahear.topmovies.viewmodel.FavoriteMoviesViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
-
-
+    @Inject
+    lateinit var favoriteAdapter: FavoriteMoviesAdapter
+    private val favoriteMoviesViewModel: FavoriteMoviesViewModel by viewModels()
+    private lateinit var binding: FragmentFavoriteBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            favoriteMoviesViewModel.getAllFavoriteMovies()
+            //Show favorite movies
+            favoriteMoviesViewModel.favoriteMovies.observe(viewLifecycleOwner) {
+                favoriteAdapter.submitList(it)
+                rvFavoriteMovies.initRecyclerView(
+                    adapter = favoriteAdapter,
+                    layoutManager = LinearLayoutManager(
+                        requireContext(),
+                        RecyclerView.VERTICAL,
+                        false
+                    )
+                )
+            }
+            //Show or hide
+            favoriteMoviesViewModel.empty.observe(viewLifecycleOwner) {
+                if (it) {
+                    containerEmpty.visibility = View.VISIBLE
+                    rvFavoriteMovies.visibility = View.GONE
+
+                } else {
+                    containerEmpty.visibility = View.GONE
+                    rvFavoriteMovies.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
 }
