@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gamil.moahear.topmovies.databinding.FragmentSearchBinding
@@ -42,7 +43,7 @@ class SearchFragment : Fragment() {
                 Log.i("0000", "onViewCreated: ${it.data}")
                 searchAdapter.submitList(it.data)
                 Log.i("0000", "onViewCreated: ${searchAdapter.itemCount}")
-                rvSeacrhMovies.initRecyclerView(
+                rvSearchMovies.initRecyclerView(
                     adapter = searchAdapter,
                     layoutManager = LinearLayoutManager(
                         requireContext(),
@@ -59,15 +60,25 @@ class SearchFragment : Fragment() {
                     progressSearchMovies.visibility = View.GONE
                 }
             }
+            //Click
+            searchAdapter.onMovieClick {
+                it.id?.let { movie_id ->
+                    findNavController().navigate(
+                        SearchFragmentDirections.actionToDetailFragment(
+                            movie_id
+                        )
+                    )
+                }
+            }
             //EmptyList
             searchViewModel.isEmpty.observe(viewLifecycleOwner) {
                 if (it) {
                     containerEmpty.visibility = View.VISIBLE
-                    rvSeacrhMovies.visibility = View.GONE
+                    rvSearchMovies.visibility = View.GONE
 
                 } else {
                     containerEmpty.visibility = View.GONE
-                    rvSeacrhMovies.visibility = View.VISIBLE
+                    rvSearchMovies.visibility = View.VISIBLE
                 }
             }
 

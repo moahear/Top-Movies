@@ -9,14 +9,18 @@
         android:id="@+id/splashFragment"
         android:name="com.gamil.moahear.topmovies.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
     </fragment>
     <action
         android:id="@+id/action_to_homeFragment"
-        app:destination="@id/homeFragment" />
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.gamil.moahear.topmovies.ui.home.HomeFragment"
@@ -26,7 +30,11 @@
         android:id="@+id/detailFragment"
         android:name="com.gamil.moahear.topmovies.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="movie_id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.gamil.moahear.topmovies.ui.register.RegisterFragment"
@@ -42,4 +50,11 @@
         android:name="com.gamil.moahear.topmovies.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <action
+        android:id="@+id/action_to_detailFragment"
+        app:destination="@id/detailFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 </navigation>

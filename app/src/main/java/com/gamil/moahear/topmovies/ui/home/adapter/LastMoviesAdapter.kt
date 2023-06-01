@@ -21,13 +21,19 @@ class LastMoviesAdapter @Inject constructor() :
         @SuppressLint("SetTextI18n")
         fun bindTopMovie(lastMovie: ResponseMovies.Data) {
             binding.apply {
-            txtMovieName.text=lastMovie.title
-                txtMovieRate.text=lastMovie.imdbRating
-                txtMovieCountry.text=lastMovie.country
-                txtMovieYear.text=lastMovie.year
-                imgMoviePoster.load(lastMovie.poster){
+                txtMovieName.text = lastMovie.title
+                txtMovieRate.text = lastMovie.imdbRating
+                txtMovieCountry.text = lastMovie.country
+                txtMovieYear.text = lastMovie.year
+                imgMoviePoster.load(lastMovie.poster) {
                     crossfade(true)
                     crossfade(800)
+                }
+                //Click
+                root.setOnClickListener {
+                    setOnMovieClickListener?.let {
+                        it(lastMovie)
+                    }
                 }
             }
         }
@@ -45,6 +51,11 @@ class LastMoviesAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: LastMoviesViewHolder, position: Int) {
         holder.bindTopMovie(lastMovies[position])
+    }
+
+    private var setOnMovieClickListener: ((ResponseMovies.Data) -> Unit)? = null
+    fun onMovieClick(listener: (ResponseMovies.Data) -> Unit) {
+        setOnMovieClickListener = listener
     }
 
     private class TopMoviesDiffUtilCallBack(

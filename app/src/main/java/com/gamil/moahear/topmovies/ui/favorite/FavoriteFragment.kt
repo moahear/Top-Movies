@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gamil.moahear.topmovies.databinding.FragmentFavoriteBinding
@@ -44,6 +45,12 @@ class FavoriteFragment : Fragment() {
                     )
                 )
             }
+            //Click
+            favoriteAdapter.onFavoriteMovieClick {
+                findNavController().navigate(FavoriteFragmentDirections.actionToDetailFragment(it.id))
+            }
+
+
             //Show or hide
             favoriteMoviesViewModel.empty.observe(viewLifecycleOwner) {
                 if (it) {

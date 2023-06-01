@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.gamil.moahear.topmovies.databinding.ItemHomeLastMovieBinding
 import com.gamil.moahear.topmovies.db.FavoriteMovieEntity
-import com.gamil.moahear.topmovies.model.home.ResponseMovies
 import javax.inject.Inject
 
 class FavoriteMoviesAdapter @Inject constructor() :
@@ -30,6 +29,12 @@ class FavoriteMoviesAdapter @Inject constructor() :
                     crossfade(true)
                     crossfade(800)
                 }
+                //Click
+                root.setOnClickListener {
+                    setOnFavoriteMovieClickListener?.let {
+                        it(favoriteMovieEntity)
+                    }
+                }
             }
         }
     }
@@ -46,6 +51,11 @@ class FavoriteMoviesAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: LastMoviesViewHolder, position: Int) {
         holder.bindTopMovie(lastMovies[position])
+    }
+
+    private var setOnFavoriteMovieClickListener: ((FavoriteMovieEntity) -> Unit)? = null
+    fun onFavoriteMovieClick(listener: (FavoriteMovieEntity) -> Unit) {
+        setOnFavoriteMovieClickListener = listener
     }
 
     private class TopMoviesDiffUtilCallBack(

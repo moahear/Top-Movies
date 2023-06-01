@@ -87,6 +87,7 @@
                     android:layout_marginEnd="@dimen/_10mdp"
                     android:layout_marginBottom="@dimen/_20mdp"
                     android:ellipsize="end"
+                    android:gravity="center"
                     android:maxLines="2"
                     android:textSize="@dimen/_20font_mdp"
                     app:layout_constraintBottom_toTopOf="@id/container_other_info"
@@ -220,11 +221,18 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- Images -->
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_images"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/_10mdp"
                 android:layout_marginBottom="@dimen/_10mdp"
                 app:layout_constraintTop_toBottomOf="@id/container_actors" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_12mdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_images" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
     <!-- Loading -->

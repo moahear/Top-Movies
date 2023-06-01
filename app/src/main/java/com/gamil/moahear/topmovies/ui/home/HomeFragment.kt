@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -23,8 +24,10 @@ class HomeFragment : Fragment() {
 
     @Inject
     lateinit var lastMoviesAdapter: LastMoviesAdapter
+
     @Inject
     lateinit var genresAdapter: GenresAdapter
+
     @Inject
     lateinit var topMoviesAdapter: TopMoviesAdapter
     private val homeViewModel: HomeViewModel by viewModels()
@@ -68,22 +71,45 @@ class HomeFragment : Fragment() {
                 indicatorTopMovies.attachToRecyclerView(rvTopMovies, pagerSnapHelper)
             }
             //Get genres
-             homeViewModel.genres.observe(viewLifecycleOwner){
-                 genresAdapter.submitList(it)
-                 rvGenres.initRecyclerView(adapter = genresAdapter, layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false))
-             }
+            homeViewModel.genres.observe(viewLifecycleOwner) {
+                genresAdapter.submitList(it)
+                rvGenres.initRecyclerView(
+                    adapter = genresAdapter,
+                    layoutManager = LinearLayoutManager(
+                        requireContext(),
+                        RecyclerView.HORIZONTAL,
+                        false
+                    )
+                )
+            }
             //Get last movies
-            homeViewModel.lastMovies.observe(viewLifecycleOwner){
+            homeViewModel.lastMovies.observe(viewLifecycleOwner) {
                 lastMoviesAdapter.submitList(it.data)
-                rvLastMovies.initRecyclerView(adapter = lastMoviesAdapter, layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false))
+                rvLastMovies.initRecyclerView(
+                    adapter = lastMoviesAdapter,
+                    layoutManager = LinearLayoutManager(
+                        requireContext(),
+                        RecyclerView.VERTICAL,
+                        false
+                    )
+                )
+            }
+            //Click
+            lastMoviesAdapter.onMovieClick {
+                it.id?.let { movie_id ->
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionToDetailFragment(
+                            movie_id
+                        )
+                    )
+                }
             }
             //Loading
-            homeViewModel.isLoading.observe(viewLifecycleOwner){
+            homeViewModel.isLoading.observe(viewLifecycleOwner) {
                 if (it) {
                     scrollView.visibility = View.GONE
                     progressBarCallMoviesApis.visibility = View.VISIBLE
-                }
-                else{
+                } else {
                     scrollView.visibility = View.VISIBLE
                     progressBarCallMoviesApis.visibility = View.GONE
                 }
