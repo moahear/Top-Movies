@@ -5,4 +5,6 @@ import javax.inject.Inject
 
 class HomeRepository @Inject constructor(private val apiInterface: ApiInterface) {
     suspend fun getTopMovies(genreId: Int) = apiInterface.getTopMovies(genreId)
+    suspend fun getGenres() = apiInterface.getGenres()
+    suspend fun getLastMovies()=apiInterface.getLastMovies()
 }

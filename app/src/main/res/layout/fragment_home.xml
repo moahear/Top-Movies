@@ -7,6 +7,7 @@
     tools:context=".ui.home.HomeFragment">
     <!-- Nested Scroll-->
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +34,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/item_home_top_movie" />
+                     />
                 <!-- Indicator use CircleIndicator2 for Recyclerview -->
                 <me.relex.circleindicator.CircleIndicator2
                     android:id="@+id/indicator_top_movies"
@@ -44,9 +45,86 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rv_top_movies" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Genres container -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_genres"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/container_top_movies"
+                >
+                <!-- Title -->
+                <TextView
+                    android:textColor="@color/crayola"
+                    android:text="@string/genres"
+                    android:id="@+id/txt_genres_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10mdp"
+                    android:textSize="@dimen/_12mdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+                <!-- Genres -->
+                <androidx.recyclerview.widget.RecyclerView
+                    app:layout_constraintTop_toBottomOf="@id/txt_genres_title"
+                    android:id="@+id/rv_genres"
+                    android:layout_marginStart="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:layout_width="match_parent"
+                    android:paddingHorizontal="@dimen/_5mdp"
+                    android:clipToPadding="false"
+                    android:layout_height="wrap_content"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Last Movies container -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_last_movies"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/container_genres"
+                >
+                <!-- Title -->
+                <TextView
+                    android:textColor="@color/crayola"
+                    android:text="@string/last_movies"
+                    android:id="@+id/txt_last_movie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10mdp"
+                    android:textSize="@dimen/_12mdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+                <!-- Last movies -->
+                <androidx.recyclerview.widget.RecyclerView
+                    app:layout_constraintTop_toBottomOf="@id/txt_last_movie"
+                    android:id="@+id/rv_last_movies"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
+<!--Loading-->
+    <ProgressBar
+        android:layout_width="@dimen/_20mdp"
+        android:layout_height="@dimen/_20mdp"
+        android:id="@+id/progress_bar_call_movies_apis"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,44 +6,45 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.gamil.moahear.topmovies.databinding.ItemHomeTopMovieBinding
+import com.gamil.moahear.topmovies.databinding.ItemHomeLastMovieBinding
 import com.gamil.moahear.topmovies.model.home.ResponseMovies
 import javax.inject.Inject
 
-class TopMoviesAdapter @Inject constructor() :
-    RecyclerView.Adapter<TopMoviesAdapter.TopMoviesViewHolder>() {
+class LastMoviesAdapter @Inject constructor() :
+    RecyclerView.Adapter<LastMoviesAdapter.LastMoviesViewHolder>() {
 
-    private val topMovies = ArrayList<ResponseMovies.Data>()
+    private val lastMovies = ArrayList<ResponseMovies.Data>()
 
-    inner class TopMoviesViewHolder(private val binding: ItemHomeTopMovieBinding) :
+    inner class LastMoviesViewHolder(private val binding: ItemHomeLastMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bindTopMovie(topMovie: ResponseMovies.Data) {
+        fun bindTopMovie(lastMovie: ResponseMovies.Data) {
             binding.apply {
-                txtMovieName.text = topMovie.title
-                txtMovieInfo.text =
-                    "${topMovie.imdbRating} | ${topMovie.country} | ${topMovie.year}"
-                imgMoviePoster.load(topMovie.poster) {
+            txtMovieName.text=lastMovie.title
+                txtMovieRate.text=lastMovie.imdbRating
+                txtMovieCountry.text=lastMovie.country
+                txtMovieYear.text=lastMovie.year
+                imgMoviePoster.load(lastMovie.poster){
                     crossfade(true)
-                    crossfade(100)
+                    crossfade(800)
                 }
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopMoviesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LastMoviesViewHolder {
         val binding =
-            ItemHomeTopMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TopMoviesViewHolder(binding)
+            ItemHomeLastMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return LastMoviesViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return if (topMovies.size>5) 5 else topMovies.size
+        return lastMovies.size
     }
 
-    override fun onBindViewHolder(holder: TopMoviesViewHolder, position: Int) {
-        holder.bindTopMovie(topMovies[position])
+    override fun onBindViewHolder(holder: LastMoviesViewHolder, position: Int) {
+        holder.bindTopMovie(lastMovies[position])
     }
 
     private class TopMoviesDiffUtilCallBack(
@@ -68,9 +69,9 @@ class TopMoviesAdapter @Inject constructor() :
     }
 
     fun submitList(newList: List<ResponseMovies.Data>) {
-        val diffResult = DiffUtil.calculateDiff(TopMoviesDiffUtilCallBack(topMovies, newList))
+        val diffResult = DiffUtil.calculateDiff(TopMoviesDiffUtilCallBack(lastMovies, newList))
         diffResult.dispatchUpdatesTo(this)
-        topMovies.clear()
-        topMovies.addAll(newList)
+        lastMovies.clear()
+        lastMovies.addAll(newList)
     }
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!-- Poster -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/container_poster"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10mdp"
+        app:cardBackgroundColor="@color/chines_black"
+        app:cardCornerRadius="@dimen/_5mdp"
+        app:cardElevation="@dimen/_3mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.35">
+
+        <ImageView
+            android:id="@+id/img_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside" />
+
+    </com.google.android.material.card.MaterialCardView>
+    <!-- Name -->
+    <TextView
+        android:id="@+id/txt_movie_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7mdp"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:layout_marginEnd="@dimen/_7mdp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/container_poster"
+        app:layout_constraintTop_toTopOf="@id/container_poster" />
+
+    <!-- Rate -->
+    <TextView
+        android:id="@+id/txt_movie_rate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:layout_marginEnd="@dimen/_7mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="1"
+        android:textColor="@color/philippine_silver"
+        android:textSize="@dimen/_10mdp"
+        app:drawableStartCompat="@drawable/ic_round_star"
+        app:drawableTint="@color/philippine_silver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/container_poster"
+        app:layout_constraintTop_toBottomOf="@id/txt_movie_name" />
+
+    <!-- Country -->
+    <TextView
+        android:id="@+id/txt_movie_country"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:layout_marginEnd="@dimen/_7mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="1"
+        android:textColor="@color/philippine_silver"
+        android:textSize="@dimen/_10mdp"
+        app:drawableStartCompat="@drawable/ic_round_language"
+        app:drawableTint="@color/philippine_silver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/container_poster"
+        app:layout_constraintTop_toBottomOf="@id/txt_movie_rate" />
+
+    <!-- Year -->
+    <TextView
+        android:id="@+id/txt_movie_year"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:layout_marginEnd="@dimen/_7mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="1"
+        android:textColor="@color/philippine_silver"
+        android:textSize="@dimen/_10mdp"
+        app:drawableStartCompat="@drawable/ic_round_calendar_today"
+        app:drawableTint="@color/philippine_silver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/container_poster"
+        app:layout_constraintTop_toBottomOf="@id/txt_movie_country" />
+
+    <!-- More info -->
+    <TextView
+        android:id="@+id/txt_movie_more_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7mdp"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:layout_marginEnd="@dimen/_7mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/more_info"
+        android:textColor="@color/scarlet"
+        android:textSize="@dimen/_10mdp"
+        app:drawableEndCompat="@drawable/ic_round_chevron_right"
+        app:drawableTint="@color/philippine_silver"
+        app:layout_constraintStart_toEndOf="@id/container_poster"
+        app:layout_constraintTop_toBottomOf="@id/txt_movie_year" />
+</androidx.constraintlayout.widget.ConstraintLayout>
